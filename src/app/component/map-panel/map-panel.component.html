@@ -1,0 +1,9 @@
+<div class="map-panel">
+    <h2 class="map-panel__title">Объекты</h2>
+    <input [(ngModel)]="text" type="text" class="map-panel__input" placeholder="Поиск">
+  <ul class="map-panel__elements" [class.map-panel__element_active]="select === object.id" *ngFor="let object of objects | filterObjects: text">
+    <li (click)="handleIsActive(object.id)"  class="map-panel__element" >
+      {{object.name}}
+    </li>
+  </ul>
+</div>

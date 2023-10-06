@@ -1,0 +1,102 @@
+li::marker {
+    content: url(../../../assets/car-icon.svg);
+  }
+  
+  input:focus {
+    outline: none;
+  }
+
+.map-panel {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    bottom: 150px;
+    background-color: #FFFFFF;
+    width: 267px;
+    border-radius: 15px;
+    z-index: 2;
+  }
+
+.map-panel__elements {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 15px;
+    margin: 0;
+  }
+  
+  .map-panel__element {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15.23px;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  
+  .map-panel__element_active {
+    background-color: rgba(255, 245, 0, .4);
+  }
+  
+  .map-panel__title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28.13px;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .map-panel__input {
+    background-color: #F2F2F2;
+    border: none;
+    width: calc(100% - 10px);
+    height: 33px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15.23px;
+    padding: 0;
+    padding-left: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    .map-panel {
+        width: 200px;
+    }
+  }
+
+  @media (max-width: 950px) {
+    .map-panel {
+        width: 150px;
+        height: max-content;
+    }
+    .map-panel__title {
+        text-align: center;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .map-panel {
+        width: 100px;
+        top: 5px;
+        right: 15px;
+        height: max-content;
+        padding-bottom: 10px;
+    }
+    .map-panel__title {
+        font-size: 18px;
+        line-height: 28.13px;
+        padding: 5px;
+    }
+
+    .map-panel__element {
+        font-size: 12px;
+        padding: 5px 0;
+    }
+
+     .map-panel__input {
+        height: 30px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+  }

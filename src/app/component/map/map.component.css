@@ -1,0 +1,36 @@
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .map-frame {
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;  
+  }
+
+  .loading-container {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .loading__title {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28.13px;
+    padding-left: 10px;
+  }
