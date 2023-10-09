@@ -9,7 +9,7 @@ import { IMarkerOptions } from 'src/app/interfaces/mapInterfaces';
 })
 export class MapService {
 
-  private map!: L.Map | LayerGroup<any>;
+  private map: any = null;
 
   constructor() {
     
@@ -17,12 +17,13 @@ export class MapService {
 
   initMap({latitude, longitude, zoom}: IMapOptions, objects: IObjects[]): void {
 
-    if(this.map) {
-      this.map.off()
-      this.map.remove()
+    if(this.map === null) {
+      this.map = L.map('map').setView([ latitude, longitude ], zoom);
     }
 
-    this.map = L.map('map').setView([ latitude, longitude ], zoom);
+    else {
+      this.map.flyTo([ latitude, longitude ], zoom)
+    }
 
     const icon: L.Icon<L.IconOptions> = L.icon({
       iconUrl: '../../../assets/marker.svg',
