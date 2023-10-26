@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
-import { LayerGroup } from 'leaflet';
 import { IMapOptions, IObjects } from 'src/app/interfaces/mapInterfaces';
 import { IMarkerOptions } from 'src/app/interfaces/mapInterfaces';
 
@@ -9,20 +8,20 @@ import { IMarkerOptions } from 'src/app/interfaces/mapInterfaces';
 })
 export class MapService {
 
-  private map: any = null;
+  private _map: any = null;
 
   constructor() {
-    
+
   }
 
-  initMap({latitude, longitude, zoom}: IMapOptions, objects: IObjects[]): void {
+  initMap({latitude, longitude, zoom}: IMapOptions, objects?: IObjects[]): void {
 
-    if(this.map === null) {
-      this.map = L.map('map').setView([ latitude, longitude ], zoom);
+    if(this._map === null) {
+      this._map = L.map('map').setView([ latitude, longitude ], zoom);
     }
 
     else {
-      this.map.flyTo([ latitude, longitude ], zoom)
+      this._map.flyTo([latitude, longitude], zoom);
     }
 
     const icon: L.Icon<L.IconOptions> = L.icon({
@@ -33,8 +32,9 @@ export class MapService {
   const iconIsClicked: L.Icon<L.IconOptions> = L.icon({
     iconUrl: '../../../assets/marker-active.svg',
     iconSize: [38, 95]
-});
+  });
 
+  if(objects) {
     objects.forEach((object) => {
       const markerOptions: IMarkerOptions = {
         icon: icon,
@@ -48,13 +48,18 @@ export class MapService {
           let isClicked = e.target.options.icon.options.iconUrl === iconIsClicked.options.iconUrl
           e.target.setIcon(isClicked ? icon : iconIsClicked)
         })
-        marker.addTo(this.map)
+        marker.addTo(this._map)
     })
+  }
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 10,
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(this.map)
+    }).addTo(this._map)
+  }
+
+  get map() {
+    return this._map
   }
 };

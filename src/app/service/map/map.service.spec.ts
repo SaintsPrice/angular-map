@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
 import { MapService } from './map.service';
 
-describe('MapService', () => {
+describe('Сервис карты ', () => {
   let service: MapService;
 
   beforeEach(() => {
@@ -10,7 +9,7 @@ describe('MapService', () => {
     service = TestBed.inject(MapService);
   });
 
-  it('should be created', () => {
+  it('Должен создавать экземпляр класса', () => {
     expect(service).toBeTruthy();
   });
 });
